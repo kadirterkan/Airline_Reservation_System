@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Airline_Reservation_System", "Airline_Reservation_System\", "{E8CBC8BE-CFFB-45D6-82CA-91193D2DF7DE}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52138"
+		Debug.AspNetCompiler.PhysicalPath = "Airline_Reservation_System\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52138\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52138"
+		Release.AspNetCompiler.PhysicalPath = "Airline_Reservation_System\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52138\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52138"
+		SlnRelativePath = "Airline_Reservation_System\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8CBC8BE-CFFB-45D6-82CA-91193D2DF7DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CBC8BE-CFFB-45D6-82CA-91193D2DF7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1E00791-CC5E-43EC-B0BB-DC75F42D911C}
+	EndGlobalSection
+EndGlobal
