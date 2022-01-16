@@ -1,9 +1,9 @@
 using System;
 using Control.Common;
 
-namespace Control.Flights.Flight.Entities
-{
-    public class Aircraft : BaseEntity
+namespace Control.Flights.Flight.Entities;
+
+public class Aircraft : BaseEntity
 {
     private string _tailNumber;
     private string _aircraftManufacturer;
@@ -48,5 +48,3 @@ namespace Control.Flights.Flight.Entities
         set => _planeBusinessCapacity = value;
     }
 }
-}
-
