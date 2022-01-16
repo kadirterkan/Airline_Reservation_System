@@ -4,50 +4,51 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Control.Common;
 using Control.Flights.Customer.Ticket;
 
-namespace Control.Flights.Flight.Entities;
-
-public class Flight : BaseEntity
+namespace Control.Flights.Flight.Entities
 {
-    private string _flightNumber;
-    private Aircraft _aircraft;
-    private Airport _departureAirport;
-    private Airport _arrivalAirport;
-    private int _flightTimeByMinutes;
-    private ICollection<Ticket> _tickets;
-
-    public string FlightNumber
+    public class Flight : BaseEntity
     {
-        get => _flightNumber;
-        set => _flightNumber = value;
-    }
+        private string _flightNumber;
+        private Aircraft _aircraft;
+        private Airport _departureAirport;
+        private Airport _arrivalAirport;
+        private int _flightTimeByMinutes;
+        private ICollection<Ticket> _tickets;
 
-    public Aircraft Aircraft
-    {
-        get => _aircraft;
-        set => _aircraft = value;
-    }
+        public string FlightNumber
+        {
+            get => _flightNumber;
+            set => _flightNumber = value;
+        }
 
-    public Airport DepartureAirport
-    {
-        get => _departureAirport;
-        set => _departureAirport = value;
-    }
+        public Aircraft Aircraft
+        {
+            get => _aircraft;
+            set => _aircraft = value;
+        }
 
-    public Airport ArrivalAirport
-    {
-        get => _arrivalAirport;
-        set => _arrivalAirport = value;
-    }
+        public Airport DepartureAirport
+        {
+            get => _departureAirport;
+            set => _departureAirport = value;
+        }
 
-    public int FlightTimeByMinutes
-    {
-        get => _flightTimeByMinutes;
-        set => _flightTimeByMinutes = value;
-    }
+        public Airport ArrivalAirport
+        {
+            get => _arrivalAirport;
+            set => _arrivalAirport = value;
+        }
 
-    public ICollection<Ticket> Tickets1
-    {
-        get => _tickets;
-        set => _tickets = value;
+        public int FlightTimeByMinutes
+        {
+            get => _flightTimeByMinutes;
+            set => _flightTimeByMinutes = value;
+        }
+
+        public ICollection<Ticket> Tickets1
+        {
+            get => _tickets;
+            set => _tickets = value;
+        }
     }
 }
