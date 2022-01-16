@@ -1,4 +1,4 @@
-﻿<%@ Master Language="VB" CodeFile="User.master.vb" Inherits="Customer_Components_MasterPage_User" %>
+﻿<%@ Master Language="C#" CodeFile="User.master.cs" Inherits="Customer_Components_MasterPage_User" %>
 
 <!DOCTYPE html>
 
@@ -6,8 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title></title>
-    <link href="../../Content/CSS/MasterPage/MasterPage.css" rel="stylesheet" type="text/css"/>
-    <link href="../../Content/CSS/HomePage/HomePage.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="../../Content/CSS/MasterPage/MasterPage.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/CSS/HomePage/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/CSS/HomePage/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/CSS/HomePage/HomePage.css" rel="stylesheet" type="text/css"/>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 
