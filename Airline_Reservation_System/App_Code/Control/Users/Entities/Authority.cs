@@ -1,8 +1,9 @@
 using Control.Common;
 
-namespace Control.Users.Entities;
-
-public class Authority : BaseEntity
+namespace Control.Users.Entities
 {
-    private string AuthorityName { get; set; }
+    public class Authority : BaseEntity
+    {
+        private string AuthorityName { get; set; }
+    }
 }
