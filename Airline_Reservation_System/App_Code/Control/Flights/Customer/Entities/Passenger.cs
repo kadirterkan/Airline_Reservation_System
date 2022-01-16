@@ -11,11 +11,11 @@ public class Passenger : BaseEntity
     private string _firstName;
     private string _lastName;
     private GenderEnum _gender;
-    private long _age;
+    private AgeEnum _age;
     private string _phoneNumber;
     private string _address;
     private ICollection<Ticket> Tickets { get; set; }
-    
+
     public string FirstName
     {
         get => _firstName;
@@ -34,7 +34,7 @@ public class Passenger : BaseEntity
         set => _gender = value;
     }
 
-    public long Age
+    public AgeEnum Age
     {
         get => _age;
         set => _age = value;
@@ -51,7 +51,7 @@ public class Passenger : BaseEntity
         get => _address;
         set => _address = value;
     }
-    
+
     public void AddTicket(in Ticket ticket) {
         Tickets.Add(ticket);
     }
