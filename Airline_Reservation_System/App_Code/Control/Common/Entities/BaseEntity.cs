@@ -1,12 +1,6 @@
-using System;
+namespace Control.Common;
 
-namespace Control.Common
+public class BaseEntity
 {
-    public class BaseEntity
-    {
-        private long ID { get; set; }
-        private DateTime CreationDate { get; set; }
-        private DateTime UpdateDate { get; set; }
-    }
-
+    
 }

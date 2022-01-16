@@ -1,10 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Customer/Components/MasterPage/User.master" CodeFile="HomePage.aspx.cs" Inherits="Customer_Pages_HomePage_HomePage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-	<link href="../../Content/CSS/HomePage/style.css" rel="stylesheet" type="text/css"/>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-    <form runat="server" novalidate="true">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+    <form runat="server">
         <div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
