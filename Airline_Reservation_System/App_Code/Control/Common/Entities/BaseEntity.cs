@@ -8,7 +8,7 @@ public class BaseEntity
     private DateTime _creationTime;
     private DateTime _updateTime;
 
-    public long İd
+    public long ID
     {
         get => _id;
         set => _id = value;
