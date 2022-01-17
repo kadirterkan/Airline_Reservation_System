@@ -1,14 +1,15 @@
 using Control.Common;
 
-namespace Control.Flights.Flight.Entities;
-
-public class Country : BaseEntity
+namespace Control.Flights.Flight.Entities
 {
-    private string _countryName;
-
-    public string CountryName
+    public class Country : BaseEntity
     {
-        get => _countryName;
-        set => _countryName = value;
+        private string _countryName;
+
+        public string CountryName
+        {
+            get => _countryName;
+            set => _countryName = value;
+        }
     }
 }

@@ -1,20 +1,21 @@
-namespace Control.Enum_Like;
-
-public class FlightClassEnum
+namespace Control.Enum_Like
 {
-    private FlightClassEnum(string value)
+    public class FlightClassEnum
     {
-        Value = value;
-    }
-    public string Value { get; private set; }
+        private FlightClassEnum(string value)
+        {
+            Value = value;
+        }
+        public string Value { get; private set; }
 
-    public static FlightClassEnum EconomicClass
-    {
-        get { return new FlightClassEnum("Economic Class"); }
-    }
-    
-    public static FlightClassEnum BussinessClass
-    {
-        get { return new FlightClassEnum("Bussiness Class"); }
+        public static FlightClassEnum EconomicClass
+        {
+            get { return new FlightClassEnum("Economic Class"); }
+        }
+
+        public static FlightClassEnum BussinessClass
+        {
+            get { return new FlightClassEnum("Bussiness Class"); }
+        }
     }
 }

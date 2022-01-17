@@ -1,28 +1,29 @@
 using System;
 
-namespace Control.Common;
-
-public class BaseEntity
+namespace Control.Common
 {
-    private long _id;
-    private DateTime _creationTime;
-    private DateTime _updateTime;
-
-    public long ID
+    public class BaseEntity
     {
-        get => _id;
-        set => _id = value;
-    }
+        private long _id;
+        private DateTime _creationTime;
+        private DateTime _updateTime;
 
-    public DateTime CreationTime
-    {
-        get => _creationTime;
-        set => _creationTime = value;
-    }
+        public long ID
+        {
+            get => _id;
+            set => _id = value;
+        }
 
-    public DateTime UpdateTime
-    {
-        get => _updateTime;
-        set => _updateTime = value;
+        public DateTime CreationTime
+        {
+            get => _creationTime;
+            set => _creationTime = value;
+        }
+
+        public DateTime UpdateTime
+        {
+            get => _updateTime;
+            set => _updateTime = value;
+        }
     }
 }

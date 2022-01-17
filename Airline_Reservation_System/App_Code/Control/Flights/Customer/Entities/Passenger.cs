@@ -4,55 +4,57 @@ using Control.Common;
 using Control.Enum_Like;
 using Control.Flights.Customer.Ticket;
 
-namespace Control.Passenger;
-
-public class Passenger : BaseEntity
+namespace Control.Passenger
 {
-    private string _firstName;
-    private string _lastName;
-    private GenderEnum _gender;
-    private AgeEnum _age;
-    private string _phoneNumber;
-    private string _address;
-    private ICollection<Ticket> Tickets { get; set; }
-
-    public string FirstName
+    public class Passenger : BaseEntity
     {
-        get => _firstName;
-        set => _firstName = value;
-    }
+        private string _firstName;
+        private string _lastName;
+        private GenderEnum _gender;
+        private AgeEnum _age;
+        private string _phoneNumber;
+        private string _address;
+        private ICollection<Ticket> Tickets { get; set; }
 
-    public string LastName
-    {
-        get => _lastName;
-        set => _lastName = value;
-    }
+        public string FirstName
+        {
+            get => _firstName;
+            set => _firstName = value;
+        }
 
-    public GenderEnum Gender
-    {
-        get => _gender;
-        set => _gender = value;
-    }
+        public string LastName
+        {
+            get => _lastName;
+            set => _lastName = value;
+        }
 
-    public AgeEnum Age
-    {
-        get => _age;
-        set => _age = value;
-    }
+        public GenderEnum Gender
+        {
+            get => _gender;
+            set => _gender = value;
+        }
 
-    public string PhoneNumber
-    {
-        get => _phoneNumber;
-        set => _phoneNumber = value;
-    }
+        public AgeEnum Age
+        {
+            get => _age;
+            set => _age = value;
+        }
 
-    public string Address
-    {
-        get => _address;
-        set => _address = value;
-    }
+        public string PhoneNumber
+        {
+            get => _phoneNumber;
+            set => _phoneNumber = value;
+        }
 
-    public void AddTicket(in Ticket ticket) {
-        Tickets.Add(ticket);
+        public string Address
+        {
+            get => _address;
+            set => _address = value;
+        }
+
+        public void AddTicket(Ticket ticket)
+        {
+            Tickets.Add(ticket);
+        }
     }
 }

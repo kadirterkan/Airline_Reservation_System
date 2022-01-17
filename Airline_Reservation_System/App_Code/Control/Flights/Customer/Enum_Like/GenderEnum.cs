@@ -1,21 +1,22 @@
-namespace Control.Enum_Like;
-
-public class GenderEnum
+namespace Control.Enum_Like
 {
-    private GenderEnum(string value)
+    public class GenderEnum
     {
-        Value = value;
-    }
-    
-    public string Value { get; private set; }
-    
-    public static GenderEnum Male
-    {
-        get { return new GenderEnum("Male"); }
-    }
-    
-    public static GenderEnum Female
-    {
-        get { return new GenderEnum("Male"); }
+        private GenderEnum(string value)
+        {
+            Value = value;
+        }
+
+        public string Value { get; private set; }
+
+        public static GenderEnum Male
+        {
+            get { return new GenderEnum("Male"); }
+        }
+
+        public static GenderEnum Female
+        {
+            get { return new GenderEnum("Male"); }
+        }
     }
 }

@@ -1,14 +1,15 @@
 using Control.Common;
 
-namespace Control.Users.Entities;
-
-public class UserTypes : BaseEntity
+namespace Control.Users.Entities
 {
-    private string _typeName;
-
-    public string TypeName
+    public class UserTypes : BaseEntity
     {
-        get => _typeName;
-        set => _typeName = value;
+        private string _typeName;
+
+        public string TypeName
+        {
+            get => _typeName;
+            set => _typeName = value;
+        }
     }
 }
