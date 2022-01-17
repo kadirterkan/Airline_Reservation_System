@@ -13,6 +13,8 @@ public class Flight : BaseEntity
     private Airport _departureAirport;
     private Airport _arrivalAirport;
     private int _flightTimeByMinutes;
+    private DateTime _departureTime;
+    private DateTime _arrivalTime;
     private ICollection<Ticket> _tickets;
 
     public string FlightNumber
@@ -45,7 +47,19 @@ public class Flight : BaseEntity
         set => _flightTimeByMinutes = value;
     }
 
-    public ICollection<Ticket> Tickets1
+    public DateTime DepartureTime
+    {
+        get => _departureTime;
+        set => _departureTime = value;
+    }
+
+    public DateTime ArrivalTime
+    {
+        get => _arrivalTime;
+        set => _arrivalTime = value;
+    }
+
+    public ICollection<Ticket> Tickets
     {
         get => _tickets;
         set => _tickets = value;
