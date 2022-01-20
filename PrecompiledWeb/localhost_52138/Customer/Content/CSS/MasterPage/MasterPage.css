@@ -1,0 +1,67 @@
+﻿body {
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.Navbar {
+    height: 55px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #242B38;
+}
+
+.CompanyLogo {
+}
+
+.CompanyLogoPng {
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    height: 65%;
+    width: 200px;
+    cursor: pointer;
+}
+
+.NavbarMenu {
+    height: 100%;
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    color: white;
+}
+
+.NavbarMenuItem {
+    padding-top: 1rem;
+    transition: filter 300ms;
+}
+
+.SignUp:hover {
+    cursor: pointer;
+    background-color: #1B202A;
+    border-bottom: 5px solid red;
+    margin-bottom: -5px;
+}
+
+.NavbarMenuTextItem {
+    padding-inline: 1rem;
+    border-right: 1px dotted #92959C;
+}
+
+.NavbarSignIn {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 75px;
+    border: 1px solid #92959C;
+}
+
+    .NavbarSignIn:hover {
+        border: 1px solid white;
+        background-color: #454B56;
+    }
+
+.UserIconPng {
+    height: 10px;
+    width: 10px;
+}

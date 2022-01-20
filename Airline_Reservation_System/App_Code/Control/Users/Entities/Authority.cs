@@ -4,6 +4,12 @@ namespace Control.Users.Entities
 {
     public class Authority : BaseEntity
     {
-        private string AuthorityName { get; set; }
+        private string _authorityName;
+
+        public string AuthorityName
+        {
+            get => _authorityName;
+            set => _authorityName = value;
+        }
     }
 }

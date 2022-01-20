@@ -7,10 +7,10 @@ using System.Web;
 
 public class BaseController
 {
-    protected SqlConnection Connection;
+    protected static SqlConnection Connection =  new SqlConnection(WebConfigurationManager.ConnectionStrings["ARS"].ConnectionString);
     
     public BaseController()
     {
-        Connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["ARS"].ConnectionString);
+        
     }
 }

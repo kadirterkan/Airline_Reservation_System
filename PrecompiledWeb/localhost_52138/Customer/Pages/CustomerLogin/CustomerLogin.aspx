@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerLogin.aspx.cs" Inherits="Customer_Pages_CustomerLogin_CustomerLogin" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Customer_Pages_CustomerLogin_CustomerLogin, App_Web_foduz014" %>
 
 <!DOCTYPE html>
 
