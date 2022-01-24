@@ -24,7 +24,7 @@ namespace Control.Users.Controller
             Connection.Open();
             Boolean returnValue = adapter.SelectCommand.ExecuteReader().HasRows;
             Connection.Close();
-            return returnValue;
+            return !returnValue;
         }
             
         public Boolean UserRegister(String username, String password, String email)
@@ -32,11 +32,11 @@ namespace Control.Users.Controller
             try
             {
                 String commandText =
-                    "INSERT INTO BASE_USER (Creation_Date, Update_Date, User_Name, Password, Email, User_Type_Id)" +
-                    @"VALUES(CURRENT_TIMESTAMP,CURRENT_TIMESTAMP, @USERNAME, @PASSWORD, @EMAIL, 1)";
+                    "INSERT INTO BASE_USER (Creation_Date, Update_Date, User_Name, Password, Email, User_Type_Id) VALUES(CURRENT_TIMESTAMP,CURRENT_TIMESTAMP, @USERNAME, @PASSWORD, @EMAIL, 1)";
                 SqlCommand command = new SqlCommand(commandText, Connection);
                 command.Parameters.Add("@USERNAME", SqlDbType.VarChar);
                 command.Parameters.Add("@PASSWORD", SqlDbType.VarChar);
+                command.Parameters.Add("@EMAIL", SqlDbType.VarChar);
                 command.Parameters["@USERNAME"].Value = username;
                 command.Parameters["@PASSWORD"].Value = password;
                 command.Parameters["@EMAIL"].Value = email;
@@ -108,7 +108,7 @@ namespace Control.Users.Controller
         {
             HttpCookie cookie = new HttpCookie("Authority");
             List<String> authorities = GetUserAuthoritiesAsStringList(userName);
-
+            
             cookie["userName"] = userName;
             foreach (String authority in authorities)
             {
@@ -120,9 +120,7 @@ namespace Control.Users.Controller
 
         private List<String> GetUserAuthoritiesAsStringList(String userName)
         {
-            String commandText = @"SELECT A.Authority_Name as AN FROM Base_User AS BU " +
-                                 @"INNER JOIN Authority AS A ON A.ID = BU.User_Type " +
-                                 @"WHERE BU.User_Name = @USERNAME";
+            String commandText = @"SELECT A.Authority_Name as AN FROM Base_User AS BU INNER JOIN Authority AS A ON A.ID = BU.User_Type_Id WHERE BU.User_Name = @USERNAME";
             SqlCommand command = new SqlCommand(commandText, Connection);
             command.Parameters.Add("@USERNAME", SqlDbType.VarChar);
             command.Parameters["@USERNAME"].Value = userName;

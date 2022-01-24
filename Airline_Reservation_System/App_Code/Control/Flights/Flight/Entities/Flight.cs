@@ -15,6 +15,8 @@ namespace Control.Flights.Flight.Entities
         private int _flightTimeByMinutes;
         private DateTime _departureTime;
         private DateTime _arrivalTime;
+        public long FlightPrice { get; set; }
+        public string FlightType { get; set; }
         private ICollection<Ticket> _tickets;
 
         public string FlightNumber

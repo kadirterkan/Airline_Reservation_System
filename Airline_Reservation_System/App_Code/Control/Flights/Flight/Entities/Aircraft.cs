@@ -5,26 +5,26 @@ namespace Control.Flights.Flight.Entities
 {
     public class Aircraft : BaseEntity
     {
-        private string _tailNumber;
-        private string _aircraftManufacturer;
-        private string _aircraftModel;
+        private String _tailNumber;
+        private String _aircraftManufacturer;
+        private String _aircraftModel;
         private DateTime _dateOfManufacture;
         private long _planeEconomyCapacity;
         private long _planeBusinessCapacity;
 
-        public string TailNumber
+        public String TailNumber
         {
             get => _tailNumber;
             set => _tailNumber = value;
         }
 
-        public string AircraftManufacturer
+        public String AircraftManufacturer
         {
             get => _aircraftManufacturer;
             set => _aircraftManufacturer = value;
         }
 
-        public string AircraftModel
+        public String AircraftModel
         {
             get => _aircraftModel;
             set => _aircraftModel = value;

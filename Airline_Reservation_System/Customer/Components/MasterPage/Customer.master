@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/BaseMasterPage.master" AutoEventWireup="true" CodeFile="Customer.master.cs" Inherits="Customer_Components_MasterPage_Customer" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <asp:ContentPlaceHolder id="headForChildren" runat="server">
+       
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <form id="form1" runat="server">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a runat="server" class="navbar-brand" href="~/Terminal/Pages/TerminalHomePage/Home.aspx">
+                    <span class="material-icons">flight_takeoff</span>JustAnOrdinaryAirline
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Book</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Tickets</a>
+                        </li>
+                    </ul>
+                    <div class="my-2 my-lg-0">
+                        <a class="nav-link" href="#">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <asp:ContentPlaceHolder id="contents" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</asp:Content>

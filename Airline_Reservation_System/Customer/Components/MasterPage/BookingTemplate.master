@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Customer/Components/MasterPage/Customer.master" AutoEventWireup="true" CodeFile="BookingTemplate.master.cs" Inherits="Customer_Components_MasterPage_BookingTemplate" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="headForChildren" Runat="Server">
+	<link href="../../Content/CSS/HomePage/HomePage.css" rel="stylesheet" type="text/css" />
+	<link href="../../Content/CSS/HomePage/style.css" rel="stylesheet" type="text/css" />
+	<asp:ContentPlaceHolder runat="server" ID="headerForPage">
+		
+	</asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="contents" Runat="Server">
+	<form>
+		<div id="booking" class="section">
+            <div class="section-center">
+            	<div class="container">
+                    <div>
+            			<div class="booking-form">
+                            <asp:ContentPlaceHolder runat="server" ID="formInsideContent">
+        	                    
+                            </asp:ContentPlaceHolder>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+        </div>
+		<asp:PlaceHolder ID="PopUpModal" runat="server" Visible="False">
+            <div class="modal-static-backdrop"></div>
+            <div class="modal modal-static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+        	                <h4 class="modal-title"><asp:Label ID="ModalTitleLabel" runat="server"></asp:Label></h4>
+        	                <asp:LinkButton ID="BtnModalCloseHeader" runat="server" CssClass="close" OnClick="OnClickCloseModal">
+        		                <span class="material-icons">close</span>
+        	                </asp:LinkButton>
+                        </div>
+                        <div class="modal-body">
+	                        <asp:ContentPlaceHolder runat="server" ID="ModalBody">
+		                        
+	                        </asp:ContentPlaceHolder>
+                        </div>
+                        <div class="modal-footer" style="gap: 1rem;">
+                            <asp:ContentPlaceHolder runat="server" ID="ModalBtns">
+                                
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </asp:PlaceHolder>
+	</form>
+</asp:Content>
+

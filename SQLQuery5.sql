@@ -10,6 +10,9 @@ INSERT INTO Authority(ID,Creation_Date, Update_Date, User_Type_Id, Authority_Nam
 VALUES(3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 'FULL_AUTHORITY_ON_AIRPORT');
 
 INSERT INTO Authority(ID,Creation_Date, Update_Date, User_Type_Id, Authority_Name)
+VALUES(7, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 'FULL_AUTHORITY_ON_COUNTRY');
+
+INSERT INTO Authority(ID,Creation_Date, Update_Date, User_Type_Id, Authority_Name)
 VALUES(4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2, 'FULL_AUTHORITY_ON_TICKET');
 
 INSERT INTO Authority(ID,Creation_Date, Update_Date, User_Type_Id, Authority_Name)
