@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="BaseMasterPage.master.cs" Inherits="BaseMasterPage" %>
 
 <%@ Register src="Components/FlightCard.ascx" tagPrefix="uc" tagName="FlightCard" %>
+<%@ Register src="Components/passengerTabContainer.ascx" tagPrefix="uc" tagName="passengerTabContainer" %>
 <!DOCTYPE html>
 
 <html>

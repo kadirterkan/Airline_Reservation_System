@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Customer_Pages_Reservation_Reservation : System.Web.UI.Page
+public partial class Customer_Pages_UserInformation_UserInformation : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
