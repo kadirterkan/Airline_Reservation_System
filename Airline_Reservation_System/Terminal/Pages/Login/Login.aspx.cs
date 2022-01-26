@@ -23,12 +23,13 @@ public partial class Terminal_Pages_TerminalLogin_Transporting : System.Web.UI.P
     private void SubmitLogin()
     {
         
-        String userName = userNameInput.Text;
+        String username = userNameInput.Text;
         String password = passwordInput.Text;
-        if (_userController.UserLogin(userName, password))
+        if (_userController.UserLogin(username, password))
         {
             MessageBox("You have successfully logged in.");
-            Response.Cookies.Add(_userController.GetAuthorityCookieWithUsername(userNameInput.Text));
+            Session["username"] = username;
+            Session["authorization"] = _userController.GetAuthorityCookieWithUsername(userNameInput.Text);
             Response.Redirect("../HomePage/Home.aspx");
         }
         else

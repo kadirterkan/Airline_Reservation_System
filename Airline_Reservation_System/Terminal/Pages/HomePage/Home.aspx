@@ -11,16 +11,16 @@
     <div class="mb-3 input-group flex-nowrap">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Dropdown Example<span class="caret"></span>
+                Aircraft Number<span class="caret"></span>
             </button>
             <asp:ListBox runat="server" CssClass="dropdown-menu"></asp:ListBox>
         </div>
-        <asp:TextBox runat="server" ID="airplaneNumberIn" CssClass="form-control" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
+        <asp:TextBox runat="server" ID="aircraftNumberIn" CssClass="form-control" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
     </div>
     <div class="mb-3 input-group flex-nowrap">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Dropdown Example<span class="caret"></span>
+                Departure Airport<span class="caret"></span>
             </button>
             <asp:ListBox runat="server" CssClass="dropdown-menu"></asp:ListBox>
         </div>
@@ -29,11 +29,18 @@
     <div class="mb-3 input-group flex-nowrap">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Dropdown Example<span class="caret"></span>
+                Arrival Airport<span class="caret"></span>
             </button>
             <asp:ListBox runat="server" CssClass="dropdown-menu"></asp:ListBox>
         </div>
         <asp:TextBox runat="server" ID="arrivalAirportNumberIn" CssClass="form-control" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
+    </div>
+    <div class="mb-3">
+        <label for="flightTypeIn" class="form-label">Flight Type</label>
+        <asp:RadioButtonList runat="server" ID="genderIn" RepeatDirection="Horizontal" CellPadding="12" ForeColor="White">
+            <asp:ListItem runat="server" Text="Direct" Value="DIRECT"></asp:ListItem>
+            <asp:ListItem runat="server" Text="Transfer" Value="TRANSFER"></asp:ListItem>
+        </asp:RadioButtonList>
     </div>
     <div class="mb-3 input-group flex-nowrap">
         <span class="input-group-text" id="inputGroup-sizing-default">Departure Date</span>

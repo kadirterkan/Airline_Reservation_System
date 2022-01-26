@@ -20,7 +20,7 @@ public class AirportPageContent
     public static String Column5 = "Airport IATA Code";
     public static String Column6 = "Edit Airport";
     public static String Column7 = "Remove Airport";
-    public static List<String> PAGE_CONTENT_HEADER_ROW = new List<string>() {Column1, Column2, Column3, Column4, Column5, Column6};
+    public static List<String> PAGE_CONTENT_HEADER_ROW = new List<string>() {Column1, Column2, Column3, Column4, Column5, Column6, Column7};
 
     public static void SetPageContent(Label PageTitle, Label PageParagraph, Button GetBtn, Button AddBtn, TableHeaderRow TableContentRow)
     {

@@ -13,8 +13,9 @@ namespace Control.Passenger
         private GenderEnum _gender;
         private AgeEnum _age;
         private string _phoneNumber;
-        private string _address;
-        private ICollection<Ticket> Tickets { get; set; }
+        public string EmailAddress { get; set; }
+        public ICollection<Ticket> Tickets { get; set; }
+        public String PassportNumber { get; set; }
 
         public string FirstName
         {
@@ -44,12 +45,6 @@ namespace Control.Passenger
         {
             get => _phoneNumber;
             set => _phoneNumber = value;
-        }
-
-        public string Address
-        {
-            get => _address;
-            set => _address = value;
         }
 
         public void AddTicket(Ticket ticket)

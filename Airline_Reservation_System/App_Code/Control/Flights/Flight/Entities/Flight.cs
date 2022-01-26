@@ -10,11 +10,9 @@ namespace Control.Flights.Flight.Entities
     {
         private string _flightNumber;
         private Aircraft _aircraft;
-        private Airport _departureAirport;
-        private Airport _arrivalAirport;
+        public Routes FlightRoute { get; set; }
         private int _flightTimeByMinutes;
         private DateTime _departureTime;
-        private DateTime _arrivalTime;
         public long FlightPrice { get; set; }
         public string FlightType { get; set; }
         private ICollection<Ticket> _tickets;
@@ -31,18 +29,6 @@ namespace Control.Flights.Flight.Entities
             set => _aircraft = value;
         }
 
-        public Airport DepartureAirport
-        {
-            get => _departureAirport;
-            set => _departureAirport = value;
-        }
-
-        public Airport ArrivalAirport
-        {
-            get => _arrivalAirport;
-            set => _arrivalAirport = value;
-        }
-
         public int FlightTimeByMinutes
         {
             get => _flightTimeByMinutes;
@@ -53,12 +39,6 @@ namespace Control.Flights.Flight.Entities
         {
             get => _departureTime;
             set => _departureTime = value;
-        }
-
-        public DateTime ArrivalTime
-        {
-            get => _arrivalTime;
-            set => _arrivalTime = value;
         }
 
         public ICollection<Ticket> Tickets
