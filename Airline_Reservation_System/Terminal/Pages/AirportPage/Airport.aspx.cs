@@ -22,9 +22,7 @@ public partial class Terminal_Pages_AirportPage_Airport : System.Web.UI.Page
     
     private AirportController _airportController = new AirportController();
     private CountryController _countryController = new CountryController();
-
-    private List<Airport> _airports;
-
+    
     private Airport NewAirport = new Airport();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -75,25 +73,7 @@ public partial class Terminal_Pages_AirportPage_Airport : System.Web.UI.Page
     {
         GenericAddEditModal.Visible = false;
     }
-
-    private void OnClickOpenEditAirportModal(object sender, EventArgs e)
-    {
-        ModalTitleLabel.Text = "Edit Airport";
-        GenericAddEditModal.Visible = true;
-
-        using (TableRow tableRow = sender as TableRow)
-        {
-            airportNameIn.Text = tableRow.Cells[1].Text;
-            airportCityIn.Text = tableRow.Cells[2].Text;
-            airportCityIn.Text = tableRow.Cells[3].Text;
-        }
-    }
     
-    private void OnClickDeleteAirportModal(object sender, EventArgs e)
-    {
-        
-    }
-
     private void AddAirport(object sender, EventArgs e)
     {
         NewAirport.AirportName = airportNameIn.Text;
@@ -102,10 +82,29 @@ public partial class Terminal_Pages_AirportPage_Airport : System.Web.UI.Page
         if (_airportController.AddAirport(NewAirport))
         {
             MessageBox("Airport successfully added");
+            GenericAddEditModal.Visible = false;
         }
         else
         {
             MessageBox("Some problem happened, check your values");
+        }
+    }
+
+    private void OnClickDeleteAirportModal(object sender, EventArgs e)
+    {
+        using (Button button = sender as Button)
+        {
+            using (TableRow tableRow = button.Parent.Parent as TableRow)
+            {
+                if (_airportController.DeleteAirport(Convert.ToInt64(tableRow.Cells[0].Text)))
+                {
+                    MessageBox("Airport successfully deleted");
+                }
+                else
+                {
+                    MessageBox("Airport deletion has been declined");
+                }
+            }
         }
     }
 
@@ -128,19 +127,12 @@ public partial class Terminal_Pages_AirportPage_Airport : System.Web.UI.Page
         {
             TableRow tableRow = _airportController.ToTableRow(airport);
             
-            TableCell editButtonCell = new TableCell();
             TableCell removeButtonCell = new TableCell();
-            Button editButton = new Button();
             Button removeButton = new Button();
-            editButton.Text = "Edit";
             removeButton.Text = "Remove";
-            editButton.Click += new EventHandler(OnClickOpenEditAirportModal);
             removeButton.Click += new EventHandler(OnClickDeleteAirportModal);
-            
-            editButtonCell.Controls.Add(editButton);
             removeButtonCell.Controls.Add(removeButton);
 
-            tableRow.Cells.Add(editButtonCell);
             tableRow.Cells.Add(removeButtonCell);
             ContentTable.Rows.Add(tableRow);
         }

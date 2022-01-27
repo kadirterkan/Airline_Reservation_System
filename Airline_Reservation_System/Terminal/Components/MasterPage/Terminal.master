@@ -19,13 +19,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../../Pages/TerminalHomePage/Home.aspx">Home</a>
+                            <a class="nav-link" href="../../Pages/HomePage/Home.aspx">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../Pages/TerminalFlightsPage/Flights.aspx">Flights</a>
+                            <a class="nav-link" href="../../Pages/FlightsPage/Flights.aspx">Flights</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../Pages/TerminalRoutesPage/Routes.aspx">Routes</a>
+                            <a class="nav-link" href="../../Pages/RoutesPage/Routes.aspx">Routes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../Pages/AircraftPage/Aircraft.aspx">Aircrafts</a>

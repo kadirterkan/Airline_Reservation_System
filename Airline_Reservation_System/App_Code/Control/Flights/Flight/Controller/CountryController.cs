@@ -13,9 +13,6 @@ public class CountryController : BaseController
 {
     public CountryController()
     {
-        //
-        //TODO: Buraya oluşturucu mantığı ekleyin
-        //
     }
 
     public List<Country> GetCountries()

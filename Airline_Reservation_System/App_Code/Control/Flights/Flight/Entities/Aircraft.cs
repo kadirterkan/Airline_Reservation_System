@@ -11,6 +11,7 @@ namespace Control.Flights.Flight.Entities
         private DateTime _dateOfManufacture;
         private long _planeEconomyCapacity;
         private long _planeBusinessCapacity;
+        public Boolean OnActiveDuty { get; set; }
 
         public String TailNumber
         {

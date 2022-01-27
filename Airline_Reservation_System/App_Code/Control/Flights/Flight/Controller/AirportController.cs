@@ -14,9 +14,7 @@ public class AirportController : BaseController
 {
     public AirportController()
     {
-        //
-        //TODO: Buraya oluşturucu mantığı ekleyin
-        //
+
     }
 
     public Boolean AddAirport(Airport airport)
@@ -38,6 +36,28 @@ public class AirportController : BaseController
         adapter.InsertCommand = command;
         Connection.Open();
         if (adapter.InsertCommand.ExecuteNonQuery() > 0)
+        {
+            Connection.Close();
+            return true;
+        }
+        else
+        {
+            Connection.Close();
+            return false;
+        }
+    }
+
+    public Boolean DeleteAirport(long airportID)
+    {
+        String commandText = @"DELETE FROM AIRPORT WHERE ID = @ID";
+        SqlCommand command = new SqlCommand(commandText, Connection);
+        command.Parameters.Add("@ID", SqlDbType.BigInt);
+        command.Parameters["@ID"].Value = airportID;
+        
+        SqlDataAdapter adapter = new SqlDataAdapter();
+        adapter.DeleteCommand = command;
+        Connection.Open();
+        if (adapter.DeleteCommand.ExecuteNonQuery() > 0)
         {
             Connection.Close();
             return true;
