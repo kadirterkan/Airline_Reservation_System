@@ -7,11 +7,11 @@ using System.Web;
 using System.Web.UI.WebControls;
 using Control.Flights.Flight.Entities;
 
-/// <summary>
-/// RouteController için özet açıklama
-/// </summary>
+
 public class RoutesController : BaseController
 {
+
+    private AirportController _airportController = new AirportController();
     
     public Boolean AddRoute(Routes routes)
     {
@@ -39,55 +39,19 @@ public class RoutesController : BaseController
 
         return returnValue > 0;
     }
+    
 
-    public Boolean EditAircraft(Aircraft aircraft, String id)
+    public Boolean DeleteRoute(long ID)
     {
-        String commandText = @"UPDATE AIRCRAFT SET UPDATE_DATE = CURRENT_TIMESTAMP, AIRCRAFT_MANUFACTURER = @AIRCRAFT_MANUFACTURER, AIRCRAFT_MODEL = @AIRCRAFT_MODEL, DATE_OF_MANUFACTURE = @DATE_OF_MANUFACTURE, PLANE_BUSINESS_CAPACITY = @PLANE_BUSINESS_CAPACITY, PLANE_ECONOMY_CAPACITY = @PLANE_ECONOMY_CAPACITY WHERE ID = @ID";
-        SqlCommand command = new SqlCommand(commandText, Connection);
-        command.Parameters.Add("@TAIL_NUMBER", SqlDbType.VarChar);
-        command.Parameters.Add("@AIRCRAFT_MANUFACTURER", SqlDbType.VarChar);
-        command.Parameters.Add("@AIRCRAFT_MODEL", SqlDbType.VarChar);
-        command.Parameters.Add("@DATE_OF_MANUFACTURE", SqlDbType.DateTime);
-        command.Parameters.Add("@PLANE_BUSINESS_CAPACITY", SqlDbType.Int);
-        command.Parameters.Add("@PLANE_ECONOMY_CAPACITY", SqlDbType.Int);
-        command.Parameters.Add("@ID", SqlDbType.BigInt);
-        command.Parameters["@TAIL_NUMBER"].Value = aircraft.TailNumber;
-        command.Parameters["@AIRCRAFT_MANUFACTURER"].Value = aircraft.AircraftManufacturer;
-        command.Parameters["@AIRCRAFT_MODEL"].Value = aircraft.AircraftModel;
-        command.Parameters["@DATE_OF_MANUFACTURE"].Value = aircraft.DateOfManufacture;
-        command.Parameters["@PLANE_BUSINESS_CAPACITY"].Value = aircraft.PlaneBusinessCapacity;
-        command.Parameters["@PLANE_ECONOMY_CAPACITY"].Value = aircraft.PlaneEconomyCapacity;
-        command.Parameters["@ID"].Value = id;
-
-        return EditAircraft(command);
-    }
-
-    private Boolean EditAircraft(SqlCommand command)
-    {
-        SqlDataAdapter adapter = new SqlDataAdapter();
-
-        adapter.UpdateCommand = command;
-        
-        Connection.Open();
-        
-        int returnValue = adapter.UpdateCommand.ExecuteNonQuery();
-        
-        Connection.Close();
-
-        return returnValue > 0;
-    }
-
-    public Boolean DeleteAircraft(long ID)
-    {
-        String commandText = @"DELETE FROM AIRCRAFT WHERE ID = @ID";
+        String commandText = @"DELETE FROM AVAILABLE_ROUTES WHERE ID = @ID";
         SqlCommand command = new SqlCommand(commandText, Connection);
         command.Parameters.Add("@ID", SqlDbType.BigInt);
         command.Parameters["@ID"].Value = ID;
 
-        return DeleteAircraft(command);
+        return DeleteRoute(command);
     }
 
-    private Boolean DeleteAircraft(SqlCommand command)
+    private Boolean DeleteRoute(SqlCommand command)
     {
         SqlDataAdapter adapter = new SqlDataAdapter();
 
@@ -102,18 +66,18 @@ public class RoutesController : BaseController
         return returnValue > 0;
     }
 
-    public List<Aircraft> GetAircrafts()
+    public List<Routes> GetRoutes()
     {
-        String commandText = "SELECT * FROM AIRCRAFT";
+        String commandText = "SELECT * FROM AVAILABLE_ROUTES";
 
         SqlCommand command = new SqlCommand(commandText, Connection);
 
-        return CommandToAircraftList(command);
+        return CommandToRoutesList(command);
     }
 
-    private List<Aircraft> CommandToAircraftList(SqlCommand command)
+    private List<Routes> CommandToRoutesList(SqlCommand command)
     {
-        List<Aircraft> countries = new List<Aircraft>();
+        List<Routes> routes = new List<Routes>();
         
         Connection.Open();
 
@@ -121,61 +85,50 @@ public class RoutesController : BaseController
 
         while (reader.Read())
         {
-            countries.Add(ReaderToCountry(reader));
+            routes.Add(ReaderToRoutes(reader));
         }
         
         Connection.Close();
 
-        return countries;
+        return routes;
     }
 
-    private Aircraft ReaderToCountry(SqlDataReader reader)
+    private Routes ReaderToRoutes(SqlDataReader reader)
     {
-        Aircraft aircraft = new Aircraft();
+        Routes route = new Routes();
 
-        aircraft.ID = Convert.ToInt64(reader["ID"]);
-        aircraft.AircraftManufacturer = reader["AIRCRAFT_MANUFACTURER"].ToString();
-        aircraft.AircraftModel = reader["AIRCRAFT_MODEL"].ToString();
-        aircraft.TailNumber = reader["TAIL_NUMBER"].ToString();
-        aircraft.DateOfManufacture = Convert.ToDateTime(reader["DATE_OF_MANUFACTURE"]);
-        aircraft.PlaneBusinessCapacity = Convert.ToInt32(reader["PLANE_BUSINESS_CAPACITY"]);
-        aircraft.PlaneEconomyCapacity = Convert.ToInt32(reader["PLANE_ECONOMY_CAPACITY"]);
+        route.ID = Convert.ToInt64(reader["ID"]);
+        route.DepartureAirport.ID = Convert.ToInt64(reader["AIRPORT1"]);
+        route.ArrivalAirport.ID = Convert.ToInt64(reader["AIRPORT2"]);
 
-        return aircraft;
+        return route;
     }
+    
 
-    public TableRow ToTableRow(Aircraft aircraft)
+    public TableRow ToTableRow(Routes routes)
     {
         TableRow tableRow = new TableRow();
 
         TableCell ID = new TableCell();
-        ID.Text = aircraft.ID.ToString();
+        ID.Text = routes.ID.ToString();
         
-        TableCell aircraftTailNumber = new TableCell();
-        aircraftTailNumber.Text = aircraft.TailNumber;
+        TableCell fromAirport = new TableCell();
+        fromAirport.Text = routes.DepartureAirport.AirportName;
 
-        TableCell aircraftManufacturer = new TableCell();
-        aircraftManufacturer.Text = aircraft.AircraftManufacturer;
+        TableCell fromAirportCountry = new TableCell();
+        fromAirportCountry.Text = routes.DepartureAirport.Country.CountryName;
 
-        TableCell aircraftModel = new TableCell();
-        aircraftModel.Text = aircraft.AircraftModel;
+        TableCell toAirport = new TableCell();
+        toAirport.Text = routes.ArrivalAirport.AirportName;
 
-        TableCell dateOfManufacture = new TableCell();
-        dateOfManufacture.Text = aircraft.DateOfManufacture.ToString("dd.MM.yyyy");
+        TableCell toAirportCountry = new TableCell();
+        toAirportCountry.Text = routes.ArrivalAirport.Country.CountryName;
 
-        TableCell planeBusinessCapacity = new TableCell();
-        planeBusinessCapacity.Text = aircraft.PlaneBusinessCapacity.ToString();
-
-        TableCell planeEconomyCapacity = new TableCell();
-        planeEconomyCapacity.Text = aircraft.PlaneEconomyCapacity.ToString();
-        
         tableRow.Cells.Add(ID);
-        tableRow.Cells.Add(aircraftTailNumber);
-        tableRow.Cells.Add(aircraftManufacturer);
-        tableRow.Cells.Add(aircraftModel);
-        tableRow.Cells.Add(dateOfManufacture);
-        tableRow.Cells.Add(planeBusinessCapacity);
-        tableRow.Cells.Add(planeEconomyCapacity);
+        tableRow.Cells.Add(fromAirport);
+        tableRow.Cells.Add(fromAirportCountry);
+        tableRow.Cells.Add(toAirport);
+        tableRow.Cells.Add(toAirportCountry);
 
         return tableRow;
     }

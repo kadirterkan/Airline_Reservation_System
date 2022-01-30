@@ -17,6 +17,31 @@ public class AirportController : BaseController
 
     }
 
+    public Airport GetAirportById(long id)
+    {
+        String commandText = @"SELECT * FROM AIRPORT AS AR INNER JOIN COUNTRY AS C ON AR.COUNTRY_ID = C.ID WHERE AR.ID = @ID";
+        SqlCommand command = new SqlCommand(commandText, Connection);
+        command.Parameters.Add("@ID", SqlDbType.BigInt);
+        command.Parameters["@ID"].Value = id;
+
+        return GetAirportById(command);
+    }
+
+    private Airport GetAirportById(SqlCommand command)
+    {
+        Connection.Open();
+        
+        SqlDataReader reader = command.ExecuteReader();
+
+        reader.Read();
+        
+        Airport returnObject = ReaderToAirport(reader, ReaderToCountry(reader));
+        
+        Connection.Close();
+
+        return returnObject;
+    }
+
     public Boolean AddAirport(Airport airport)
     {
         String commandText = @"INSERT INTO AIRPORT (CREATION_DATE, UPDATE_DATE, IATA_CODE, AIRPORT_NAME, AIRPORT_CITY, COUNTRY_ID) VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @IATA, @NAME, @CITY, @CID)";
@@ -46,7 +71,6 @@ public class AirportController : BaseController
             return false;
         }
     }
-
     public Boolean DeleteAirport(long airportID)
     {
         String commandText = @"DELETE FROM AIRPORT WHERE ID = @ID";
@@ -94,9 +118,10 @@ public class AirportController : BaseController
             destinationAirports.Add(ReaderToAirport(reader,ReaderToCountry(reader)));
         }
         
+        Connection.Close();
+
         return destinationAirports;
     }
-
     
     private Country ReaderToCountry(SqlDataReader reader)
     {
@@ -117,8 +142,16 @@ public class AirportController : BaseController
         airport.AirportCity = reader["AIRPORT_CITY"].ToString();
         airport.AirportName = reader["AIRPORT_NAME"].ToString();
         airport.Country = country;
-
+        
         return airport;
+    }
+    public ListItem AirportToListItem(Airport airport)
+    {
+        ListItem listItem = new ListItem();
+        listItem.Text = airport.AirportName;
+        listItem.Value = airport.ID.ToString();
+
+        return listItem;
     }
     
     public TableRow ToTableRow(Airport airport)

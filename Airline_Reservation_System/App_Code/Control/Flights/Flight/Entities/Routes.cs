@@ -15,6 +15,7 @@ public class Routes : BaseEntity
     
     public Routes()
     {
-        
+        DepartureAirport = new Airport();
+        ArrivalAirport = new Airport();
     }
 }

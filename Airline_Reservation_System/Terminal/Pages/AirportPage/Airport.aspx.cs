@@ -102,7 +102,7 @@ public partial class Terminal_Pages_AirportPage_Airport : System.Web.UI.Page
                 }
                 else
                 {
-                    MessageBox("Airport deletion has been declined");
+                    MessageBox("Airport deletion is declined");
                 }
             }
         }

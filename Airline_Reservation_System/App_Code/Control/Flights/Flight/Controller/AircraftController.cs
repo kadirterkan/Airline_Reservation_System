@@ -125,7 +125,7 @@ public class AircraftController : BaseController
 
     private List<Aircraft> CommandToAircraftList(SqlCommand command)
     {
-        List<Aircraft> countries = new List<Aircraft>();
+        List<Aircraft> aircraft = new List<Aircraft>();
         
         Connection.Open();
 
@@ -133,15 +133,15 @@ public class AircraftController : BaseController
 
         while (reader.Read())
         {
-            countries.Add(ReaderToCountry(reader));
+            aircraft.Add(ReaderToAircraft(reader));
         }
         
         Connection.Close();
 
-        return countries;
+        return aircraft;
     }
 
-    private Aircraft ReaderToCountry(SqlDataReader reader)
+    private Aircraft ReaderToAircraft(SqlDataReader reader)
     {
         Aircraft aircraft = new Aircraft();
 
