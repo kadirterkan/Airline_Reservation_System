@@ -13,18 +13,18 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                 Choose Aircraft<span class="caret"></span>
             </button>
-            <asp:ListBox runat="server" ID="airplaneList" CssClass="dropdown-menu" OnSelectedIndexChanged="airplaneList_OnSelectedIndexChanged"></asp:ListBox>
+            <asp:ListBox runat="server" ID="airplaneList" CssClass="dropdown-menu" AutoPostBack="True" OnSelectedIndexChanged="airplaneList_OnSelectedIndexChanged"></asp:ListBox>
         </div>
-        <asp:TextBox runat="server" ID="airplaneNumberIn" CssClass="form-control" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
+        <asp:TextBox runat="server" ID="airplaneNumberIn" CssClass="form-control" AutoPostBack="True" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
     </div>
     <div class="mb-3 input-group flex-nowrap">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                 Choose Route<span class="caret"></span>
             </button>
-            <asp:ListBox runat="server" ID="routeList" CssClass="dropdown-menu" OnSelectedIndexChanged="routeList_OnSelectedIndexChanged"></asp:ListBox>
+            <asp:ListBox runat="server" ID="routeList" AutoPostBack="True" CssClass="dropdown-menu" OnSelectedIndexChanged="routeList_OnSelectedIndexChanged"></asp:ListBox>
         </div>
-        <asp:TextBox runat="server" ID="routeIn" CssClass="form-control" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
+        <asp:TextBox runat="server" ID="routeIn" CssClass="form-control" AutoPostBack="True" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
     </div>
     <div class="mb-3 input-group flex-nowrap">
         <span class="input-group-text" id="inputGroup-sizing-default">Departure Date</span>

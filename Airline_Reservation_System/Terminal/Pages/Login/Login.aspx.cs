@@ -30,7 +30,7 @@ public partial class Terminal_Pages_TerminalLogin_Transporting : System.Web.UI.P
             MessageBox("You have successfully logged in.");
             Session["username"] = username;
             Session["authorization"] = _userController.GetAuthorityCookieWithUsername(userNameInput.Text);
-            Response.Redirect("../HomePage/Home.aspx");
+            Response.Redirect("../FlightsPage/Flights.aspx");
         }
         else
         {

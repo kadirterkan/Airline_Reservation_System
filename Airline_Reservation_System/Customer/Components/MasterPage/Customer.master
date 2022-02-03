@@ -10,7 +10,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a runat="server" class="navbar-brand" href="~/Terminal/Pages/TerminalHomePage/Home.aspx">
+                <a runat="server" class="navbar-brand" href="../../Pages/Home/Home.aspx">
                     <span class="material-icons">flight_takeoff</span>JustAnOrdinaryAirline
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,17 +19,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="">Book</a>
+                            <a class="nav-link" href="../../Pages/Home/Home.aspx">Book</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Tickets</a>
+                            <a class="nav-link" href="../../Pages/Tickets/Tickets.aspx">Tickets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">User Informations</a>
+                            <a class="nav-link" href="../../Pages/UserInformation/UserInformation.aspx">User Informations</a>
                         </li>
                     </ul>
                     <div class="my-2 my-lg-0">
-                        <a class="nav-link" href="#">Log Out</a>
+                        <asp:LinkButton class="nav-link" OnClick="OnClick" runat="server">Log Out</asp:LinkButton>
                     </div>
                 </div>
             </div>

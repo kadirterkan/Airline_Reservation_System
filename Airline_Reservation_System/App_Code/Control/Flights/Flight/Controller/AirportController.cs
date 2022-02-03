@@ -17,6 +17,44 @@ public class AirportController : BaseController
 
     }
 
+    public List<Airport> GetAirportsByCountryId(Int64 countryId)
+    {
+        String commandText = @"SELECT * FROM AIRPORT WHERE COUNTRY_ID = @COUNTRY_ID";
+        SqlCommand command = new SqlCommand(commandText, Connection);
+        command.Parameters.Add("@COUNTRY_ID",SqlDbType.BigInt);
+        command.Parameters["@COUNTRY_ID"].Value = countryId;
+        
+        Connection.Open();
+
+        SqlDataReader reader = command.ExecuteReader();
+
+        List<Airport> returnList = ReaderToList(reader);
+
+        Connection.Close();
+
+        return returnList;
+    }
+
+    public List<Airport> GetArrivalAirportsByAirportIdAndCountryId(Int64 airportId, Int64 countryId)
+    {
+        String commandText = @"SELECT * FROM AIRPORT INNER JOIN AVAILABLE_ROUTES as AR ON AIRPORT.ID = AR.AIRPORT2 WHERE AR.AIRPORT1 = @ID AND COUNTRY_ID = @COUNTRY_ID";
+        SqlCommand command = new SqlCommand(commandText, Connection);
+        command.Parameters.Add("@COUNTRY_ID",SqlDbType.BigInt);
+        command.Parameters.Add("@ID",SqlDbType.BigInt);
+        command.Parameters["@COUNTRY_ID"].Value = countryId;
+        command.Parameters["@ID"].Value = airportId;
+        
+        Connection.Open();
+
+        SqlDataReader reader = command.ExecuteReader();
+
+        List<Airport> returnList = ReaderToList(reader);
+
+        Connection.Close();
+
+        return returnList;
+    }
+
     public Airport GetAirportById(long id)
     {
         String commandText = @"SELECT * FROM AIRPORT AS AR INNER JOIN COUNTRY AS C ON AR.COUNTRY_ID = C.ID WHERE AR.ID = @ID";
@@ -128,7 +166,7 @@ public class AirportController : BaseController
         Country country = new Country();
         
         country.ID = Convert.ToInt64(reader["COUNTRY_ID"]);
-        country.CountryName = reader["COUNTRY_NAME"].ToString();
+        country.CountryName = reader["COUNTRY.COUNTRY_NAME"].ToString();
 
         return country;
     }

@@ -30,7 +30,7 @@ public class FlightController : BaseController
         command.Parameters.Add("@DEPARTURE_TIME", SqlDbType.DateTime);
         command.Parameters.Add("@AIRCRAFT_ID", SqlDbType.BigInt);
         command.Parameters.Add("@AVAILABLE_ROUTES_ID", SqlDbType.BigInt);
-        command.Parameters["@FLIGHT_NUMBER"].Value = flight.FlightNumber;
+        command.Parameters["@FLIGHT_NUMBER"].Value = "FN" + flight.FlightNumber;
         command.Parameters["@FLIGHT_TIME_BY_MINUTES"].Value = flight.FlightTimeByMinutes;
         command.Parameters["@GATE_NO"].Value = flight.GateNo;
         command.Parameters["@FLIGHT_TYPE"].Value = flight.FlightType;
@@ -225,19 +225,19 @@ public class FlightController : BaseController
         TableCell arrivalAirportName = new TableCell();
         arrivalAirportName.Text = _airportController.GetAirportById(flight.FlightRoute.ArrivalAirport.ID).AirportName;
 
-        TableCell planeBusinessCapacity = new TableCell();
-        planeBusinessCapacity.Text = _ticketController.GetAttenderCountByIdAndFlightClass(flight.ID, "BUSINESS").ToString();
+        TableCell planeBusinessAttenders = new TableCell();
+        planeBusinessAttenders.Text = _ticketController.GetAttenderCountByIdAndFlightClass(flight.ID, "BUSINESS").ToString();
 
-        TableCell planeEconomyCapacity = new TableCell();
-        planeBusinessCapacity.Text = _ticketController.GetAttenderCountByIdAndFlightClass(flight.ID, "ECONOMY").ToString();
+        TableCell planeEconomyAttenders = new TableCell();
+        planeEconomyAttenders.Text = _ticketController.GetAttenderCountByIdAndFlightClass(flight.ID, "ECONOMY").ToString();
         
         tableRow.Cells.Add(ID);
         tableRow.Cells.Add(flightNumber);
         tableRow.Cells.Add(flightDepartureDate);
         tableRow.Cells.Add(departureAirportName);
         tableRow.Cells.Add(arrivalAirportName);
-        tableRow.Cells.Add(planeBusinessCapacity);
-        tableRow.Cells.Add(planeEconomyCapacity);
+        tableRow.Cells.Add(planeEconomyAttenders);
+        tableRow.Cells.Add(planeBusinessAttenders);
 
         return tableRow;
     }

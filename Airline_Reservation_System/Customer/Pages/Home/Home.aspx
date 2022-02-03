@@ -47,15 +47,13 @@
     		<div class="col-md-4">
     			<div class="form-group">
     				<span class="form-label">Adults (18+)</span>
-    				<asp:DropDownList runat="server" CssClass="form-control" ID="adultsList"/>
-    				<span class="select-arrow"></span>
+    				<asp:TextBox runat="server" type="number" value="0" CssClass="form-control" min="0" max="9" ID="adultCount"/>
     			</div>
     		</div>
     		<div class="col-md-4">
     			<div class="form-group">
     				<span class="form-label">Children (0-17)</span>
-    				<asp:DropDownList runat="server" CssClass="form-control" ID="childrenList"/>												
-    				<span class="select-arrow"></span>
+    				<asp:TextBox runat="server" type="number" value="0" CssClass="form-control" min="0" max="9" ID="childrenCount"/>												
     			</div>
     		</div>
     		<div class="col-md-4">
@@ -64,7 +62,8 @@
     				<asp:DropDownList runat="server" CssClass="form-control" ID="travelClassList">
     					<asp:ListItem Text="Economy Class" Value="Economy Class"/>
     					<asp:ListItem Text="Business class" Value="Business Class"/>
-    					<asp:ListItem Text="First class" Value="First Class"/>
+	                    <%-- TODO : ADD FIRST CLASS IN THE FUTURE --%>
+    					<%-- <asp:ListItem Text="First class" Value="First Class"/> --%>
     				</asp:DropDownList>
     				<span class="select-arrow"></span>
     			</div>
@@ -81,7 +80,7 @@
 	        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 	            <asp:Label runat="server" ID="CountryLabel"></asp:Label> Country<span class="caret"></span>
 	        </button>
-	        <asp:ListBox runat="server" CssClass="dropdown-menu"></asp:ListBox>
+	        <asp:ListBox runat="server" CssClass="dropdown-menu" AutoPostBack="True" OnSelectedIndexChanged="countryList_OnSelectedIndexChanged" ID="countryList"></asp:ListBox>
 	    </div>
 	    <asp:TextBox runat="server" ID="countryIn" CssClass="form-control" Enabled="False" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
 	</div>
@@ -91,14 +90,14 @@
 	            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
 	                <asp:Label runat="server" ID="AirportLabel"></asp:Label> Airport<span class="caret"></span>
 	            </button>
-	            <asp:ListBox runat="server" Enabled="False" CssClass="dropdown-menu"></asp:ListBox>
+	            <asp:ListBox runat="server" Enabled="False" AutoPostBack="True" CssClass="dropdown-menu" ID="airportList" OnSelectedIndexChanged="airportList_OnSelectedIndexChanged"></asp:ListBox>
 	        </div>
 	        <asp:TextBox runat="server" ID="airportIn" CssClass="form-control" type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
 	    </div>
 	</asp:PlaceHolder>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ModalBtns" Runat="Server">
-    <asp:LinkButton ID="BtnModalSubmitFooter" runat="server" CssClass="btn btn-primary" Text="Submit"></asp:LinkButton>
+    <asp:LinkButton ID="BtnModalSubmitFooter" runat="server" CssClass="btn btn-primary" Text="Submit" OnClick="BtnModalSubmitFooter_OnClick"></asp:LinkButton>
     <asp:LinkButton ID="BtnModalCloseFooter" runat="server" CssClass="btn btn-primary" Text="Close" OnClick="OnClickClosePopUpModal"></asp:LinkButton>
 </asp:Content>
 

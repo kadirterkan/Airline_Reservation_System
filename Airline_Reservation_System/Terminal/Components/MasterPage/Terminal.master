@@ -10,7 +10,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a runat="server" class="navbar-brand" href="~/Terminal/Pages/TerminalHomePage/Home.aspx">
+                <a runat="server" class="navbar-brand" href="../../Pages/FlightsPage/Flights.aspx">
                     <span class="material-icons">flight</span>TERMINAL
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,9 +18,9 @@
                 </button>                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../Pages/HomePage/Home.aspx">Home</a>
-                        </li>
+                        <%-- <li class="nav-item"> --%>
+                        <%--     <a class="nav-link" href="../../Pages/FlightsPage/Flights.aspx">Home</a> --%>
+                        <%-- </li> --%>
                         <li class="nav-item">
                             <a class="nav-link" href="../../Pages/FlightsPage/Flights.aspx">Flights</a>
                         </li>
@@ -35,7 +35,7 @@
                         </li>
                     </ul>
                     <div class="my-2 my-lg-0">
-                        <a class="nav-link" href="#">Log Out</a>
+                        <asp:LinkButton class="nav-link" OnClick="OnClick">Log Out</asp:LinkButton>
                     </div>
                 </div>
             </div>

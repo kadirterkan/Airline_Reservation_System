@@ -35,6 +35,8 @@ public partial class Terminal_Pages_TerminalFlightsPage_Flights : System.Web.UI.
         AddBtn.Click += new EventHandler(OnClickOpenAddFlightModal);
         BtnModalCloseHeader.Click += new EventHandler(OnClickCloseFlightModal);
         BtnModalCloseFooter.Click += new EventHandler(OnClickCloseFlightModal);
+
+        BtnModalSubmitFooter.Click += new EventHandler(AddFlight);
         
         GetFlights();
     }
@@ -64,6 +66,7 @@ public partial class Terminal_Pages_TerminalFlightsPage_Flights : System.Web.UI.
     
     private void OnClickOpenAddFlightModal(object sender, EventArgs e)
     {
+        ClearInputs();
         GetRoutes();
         GetAircrafts();
         ModalTitleLabel.Text = "Add Flight";
@@ -171,7 +174,7 @@ public partial class Terminal_Pages_TerminalFlightsPage_Flights : System.Web.UI.
                                    .AirportName;
                 departureDate.Text = flight.DepartureTime.ToString();
                 flightLength.Text = flight.FlightTimeByMinutes.ToString();
-                economyCapacity.Attributes.Add("min",flight.EcoCapacity.ToString());
+                economyCapacity.Attributes.Add("min","5");
                 economyCapacity.Text = flight.EcoCapacity.ToString();
                 businessCapacity.Attributes.Add("min",flight.BusCapacity.ToString());
                 businessCapacity.Text = flight.BusCapacity.ToString();
@@ -180,7 +183,7 @@ public partial class Terminal_Pages_TerminalFlightsPage_Flights : System.Web.UI.
         }
     }
     
-    private void AddRoute(object sender, EventArgs e)
+    private void AddFlight(object sender, EventArgs e)
     {
         Flight flight = new Flight();
         flight.FlightNumber = flightNumberIn.Text;
@@ -227,6 +230,22 @@ public partial class Terminal_Pages_TerminalFlightsPage_Flights : System.Web.UI.
         ContentTable.Rows.Clear();
 
         ContentTable.Rows.Add(TableContentRow);
+    }
+
+    private void ClearInputs()
+    {
+        flightNumberIn.Text = "";
+        airplaneList.SelectedValue = "";
+        airplaneNumberIn.Text = "";
+        routeList.SelectedValue = "";
+        routeIn.Text = "";
+        departureDate.Text = "";
+        flightLength.Text = "";
+        // economyCapacity.Attributes.Add("min","0");
+        economyCapacity.Text = "";
+        // businessCapacity.Attributes.Add("min","0");
+        businessCapacity.Text = "";
+        gateNo.Text = "";
     }
 
     private void MessageBox(String message)
