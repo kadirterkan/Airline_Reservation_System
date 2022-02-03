@@ -13,7 +13,10 @@ namespace Control.Flights.Flight.Entities
         public Routes FlightRoute { get; set; }
         private int _flightTimeByMinutes;
         private DateTime _departureTime;
+        public String GateNo { get; set; }
         public long FlightPrice { get; set; }
+        public int EcoCapacity { get; set; }
+        public int BusCapacity { get; set; }
         public string FlightType { get; set; }
         private ICollection<Ticket> _tickets;
 

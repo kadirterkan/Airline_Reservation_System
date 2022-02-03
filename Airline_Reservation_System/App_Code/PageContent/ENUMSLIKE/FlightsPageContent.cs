@@ -19,7 +19,7 @@ public class FlightsPageContent
     public static String Column4 = "Departure Airport";
     public static String Column5 = "Arrival Airport";
     public static String Column6 = "Economic Class Attenders";
-    public static String Column7 = "Bussiness Class Attenders";
+    public static String Column7 = "Business Class Attenders";
     public static String Column8 = "Edit Flight";
     public static String Column9 = "Remove Flight";
     public static List<String> PAGE_CONTENT_HEADER_ROW = new List<string>() {Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9};

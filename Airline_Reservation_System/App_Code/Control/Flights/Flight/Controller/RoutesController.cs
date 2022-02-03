@@ -10,12 +10,12 @@ using Control.Flights.Flight.Entities;
 
 public class RoutesController : BaseController
 {
-
     private AirportController _airportController = new AirportController();
-    
+
     public Boolean AddRoute(Routes routes)
     {
-        String commandText = @"INSERT INTO AVAILABLE_ROUTES (CREATION_DATE, UPDATE_DATE, AIRPORT1, AIRPORT2) VALUES(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @AIRPORT1, @AIRPORT2)";
+        String commandText =
+            @"INSERT INTO AVAILABLE_ROUTES (CREATION_DATE, UPDATE_DATE, AIRPORT1, AIRPORT2) VALUES(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @AIRPORT1, @AIRPORT2)";
         SqlCommand command = new SqlCommand(commandText, Connection);
         command.Parameters.Add("@AIRPORT1", SqlDbType.BigInt);
         command.Parameters.Add("@AIRPORT2", SqlDbType.BigInt);
@@ -30,7 +30,7 @@ public class RoutesController : BaseController
         SqlDataAdapter adapter = new SqlDataAdapter();
 
         adapter.InsertCommand = command;
-        
+
         Connection.Open();
 
         int returnValue = adapter.InsertCommand.ExecuteNonQuery();
@@ -39,7 +39,6 @@ public class RoutesController : BaseController
 
         return returnValue > 0;
     }
-    
 
     public Boolean DeleteRoute(long ID)
     {
@@ -56,11 +55,11 @@ public class RoutesController : BaseController
         SqlDataAdapter adapter = new SqlDataAdapter();
 
         adapter.DeleteCommand = command;
-        
+
         Connection.Open();
 
         int returnValue = adapter.DeleteCommand.ExecuteNonQuery();
-        
+
         Connection.Close();
 
         return returnValue > 0;
@@ -78,7 +77,7 @@ public class RoutesController : BaseController
     private List<Routes> CommandToRoutesList(SqlCommand command)
     {
         List<Routes> routes = new List<Routes>();
-        
+
         Connection.Open();
 
         SqlDataReader reader = command.ExecuteReader();
@@ -87,8 +86,14 @@ public class RoutesController : BaseController
         {
             routes.Add(ReaderToRoutes(reader));
         }
-        
+
         Connection.Close();
+
+        foreach (Routes route in routes)
+        {
+            route.ArrivalAirport = _airportController.GetAirportById(route.ArrivalAirport.ID);
+            route.DepartureAirport = _airportController.GetAirportById(route.DepartureAirport.ID);
+        }
 
         return routes;
     }
@@ -103,7 +108,6 @@ public class RoutesController : BaseController
 
         return route;
     }
-    
 
     public TableRow ToTableRow(Routes routes)
     {
@@ -111,7 +115,7 @@ public class RoutesController : BaseController
 
         TableCell ID = new TableCell();
         ID.Text = routes.ID.ToString();
-        
+
         TableCell fromAirport = new TableCell();
         fromAirport.Text = routes.DepartureAirport.AirportName;
 
@@ -132,5 +136,4 @@ public class RoutesController : BaseController
 
         return tableRow;
     }
-
 }
