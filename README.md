@@ -1,6 +1,6 @@
 Airline_Reservation_System
 
-PROJE BÜTÜNLEŞİK OLARAK ÇALIŞMAYABİLİR.
+DİKKAT !!!! PROJE BÜTÜNLEŞİK OLARAK ÇALIŞMAYABİLİR.
 
 CUSTOMER GİRİŞİ İÇİN => http://localhost:52138/Customer/Pages/Login/Login.aspx sayfasına gidin. 
 
