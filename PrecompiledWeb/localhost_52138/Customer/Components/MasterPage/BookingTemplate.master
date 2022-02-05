@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" masterpagefile="~/Customer/Components/MasterPage/Customer.master" autoeventwireup="true" inherits="Customer_Components_MasterPage_BookingTemplate, App_Web_ubyvbihz" %>
+﻿<%@ master language="C#" masterpagefile="~/Customer/Components/MasterPage/Customer.master" autoeventwireup="true" inherits="Customer_Components_MasterPage_BookingTemplate, App_Web_5stg2yaj" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headForChildren" Runat="Server">
 	<link href="../../Content/CSS/HomePage/HomePage.css" rel="stylesheet" type="text/css" />

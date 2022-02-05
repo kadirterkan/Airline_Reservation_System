@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Customer/Components/MasterPage/BookingTemplate.master" AutoEventWireup="true" CodeFile="UserInformation.aspx.cs" Inherits="Customer_Pages_UserInformation_UserInformation" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Customer/Components/MasterPage/BookingTemplate.master" autoeventwireup="true" inherits="Customer_Pages_UserInformation_UserInformation, App_Web_as30hb0n" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headerForPage" Runat="Server">
-    <title>Profile</title>
+    <title>User Information</title>
     <link href="../../Content/CSS/Reservation/reservation.css" rel="stylesheet" type="text/css"></link>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="formInsideContent" Runat="Server">
     <form>
         <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">  
         </asp:ScriptManager>
-        <%-- <div class="mb-3"> --%>
-        <%--     <h1 style="color: white;"></h1> --%>
-        <%-- </div> --%>
+        <div class="mb-3">
+            <h1 style="color: white;">Look and change your user information. </h1>
+        </div>
         <div class="mb-3">
             <ajaxToolkit:TabContainer runat="server" CssClass="MyTable" ID="userInfoTab">
                 <ajaxToolkit:TabPanel runat="server" HeaderText="User Informations">

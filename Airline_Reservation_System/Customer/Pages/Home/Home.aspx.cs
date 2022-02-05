@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
+using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,10 +18,11 @@ public partial class Customer_Pages_Home_Transporting : System.Web.UI.Page
     private static CountryController _countryController = new CountryController();
     private static AirportController _airportController = new AirportController();
 
-    
     protected void Page_Load(object sender, EventArgs e)
     {
         ReadyTheControls();
+
+        // Application["flightRequest"] = new Flight();
     }
 
     protected void ReadyTheControls()
@@ -33,6 +35,11 @@ public partial class Customer_Pages_Home_Transporting : System.Web.UI.Page
 
     protected void OnClickSelectDepartureAirport(object sender, EventArgs e)
     {
+        arrivalAirportButton.Enabled = false;
+        countryIn.Text = null;
+        airportIn.Text = null;
+        countryList.Items.Clear();
+        airportList.Items.Clear();
         GetDepartureCountryList();
         PopUpModal.Visible = true;
         AirportInputHolder.Visible = false;
@@ -42,6 +49,11 @@ public partial class Customer_Pages_Home_Transporting : System.Web.UI.Page
     
     protected void OnClickSelectArrivalAirport(object sender, EventArgs e)
     {
+        countryIn.Text = null;
+        airportIn.Text = null;
+        countryList.Items.Clear();
+        airportList.Items.Clear();
+        GetArrivalCountryList();
         PopUpModal.Visible = true;
         AirportInputHolder.Visible = false;
         ModalTitleLabel.Text = "Select Arrival Airport";
@@ -122,7 +134,6 @@ public partial class Customer_Pages_Home_Transporting : System.Web.UI.Page
                 
                 airportList.Items.Add(listItem);
             }
-            AirportInputHolder.Visible = true;
         }
         else if (Application["airportType"].Equals("ARRIVAL"))
         {
@@ -135,11 +146,7 @@ public partial class Customer_Pages_Home_Transporting : System.Web.UI.Page
                 airportList.Items.Add(listItem);
             }
         }
-    }
-    
-    protected void airportList_OnSelectedIndexChanged(object sender, EventArgs e)
-    {
-        airportIn.Text = airportList.SelectedItem.Text;
+        AirportInputHolder.Visible = true;
     }
 
     protected void BtnModalSubmitFooter_OnClick(object sender, EventArgs e)
@@ -147,10 +154,36 @@ public partial class Customer_Pages_Home_Transporting : System.Web.UI.Page
         if (Application["airportType"].Equals("DEPARTURE"))
         {
             Application["departureAirportId"] = airportList.SelectedValue;
+            departureAirportButton.Text = airportList.SelectedItem.Text;
         }
         else if (Application["airportType"].Equals("ARRIVAL"))
         {
             Application["arrivalAirportId"] = airportList.SelectedValue;
+            arrivalAirportButton.Text = airportList.SelectedItem.Text;
         }
+        PopUpModal.Visible = false;
+        arrivalAirportButton.Enabled = true;
+    }
+    
+    private void MessageBox(String message)
+    {
+        Response.Write("<script>alert('" + message + "');</script>");
+    }
+
+    protected void airportList_OnSelectedIndexChanged(object sender, EventArgs e)
+    {
+        airportIn.Text = airportList.SelectedItem.Text;
+    }
+
+    protected void showFlights_OnClick(object sender, EventArgs e)
+    {
+        String departureAirportId = "?departureAirportId=" + Application["departureAirportId"].ToString();
+        String arrivalAirportId = "?arrivalAirportId=" +Application["arrivalAirportId"].ToString();
+        Application["departureDate"] = departingDateIn.Text;
+        Application["adultCount"] = adultCount.Text;
+        Application["childrenCount"] = childrenCount.Text;
+        Application["flightClass"] = travelClassList.SelectedValue;
+        
+        Response.Redirect("../Booking/Booking.aspx");
     }
 }

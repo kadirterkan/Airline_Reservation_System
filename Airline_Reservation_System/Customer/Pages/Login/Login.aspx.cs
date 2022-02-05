@@ -58,7 +58,7 @@ public partial class Customer_Pages_CustomerLogin_Transporting : System.Web.UI.P
         {
             MessageBox("You have successfully logged in.");
             Session["username"] = username;
-            Session["authorization"] = _userController.GetAuthorityCookieWithUsername(userNameInput.Text);
+            Session["userId"] = _userController.GetUserByUserName(username).ID;
             Response.Redirect("../Home/Home.aspx");
         }
         else

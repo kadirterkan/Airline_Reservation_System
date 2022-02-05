@@ -21,9 +21,8 @@ public class TicketsPageContent
     public static String Column6 = "Flight Departure Airport";
     public static String Column7 = "Flight Departure Time";
     public static String Column8 = "Flight Arrival Airport";
-    public static String Column9 = "Flight Duration";
     public static String Column10 = "Remove Ticket";
-    public static List<String> PAGE_CONTENT_HEADER_ROW = new List<string>() { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10 };
+    public static List<String> PAGE_CONTENT_HEADER_ROW = new List<string>() { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column10 };
 
     public static void SetPageContent(Label PageTitle, Label PageParagraph, Button GetBtn, TableHeaderRow TableContentRow)
     {

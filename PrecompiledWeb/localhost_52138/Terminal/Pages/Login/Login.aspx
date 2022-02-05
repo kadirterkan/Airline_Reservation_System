@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/BaseMasterPage.master" autoeventwireup="true" inherits="Terminal_Pages_TerminalLogin_Transporting, App_Web_mknlk4zy" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/BaseMasterPage.master" autoeventwireup="true" inherits="Terminal_Pages_TerminalLogin_Transporting, App_Web_m40laru3" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>Terminal Login</title>

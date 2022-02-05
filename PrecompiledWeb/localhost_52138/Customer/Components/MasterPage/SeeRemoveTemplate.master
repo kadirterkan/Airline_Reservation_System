@@ -1,0 +1,54 @@
+﻿<%@ master language="C#" masterpagefile="~/Customer/Components/MasterPage/Customer.master" autoeventwireup="true" inherits="Customer_Components_MasterPage_SeeRemoveTemplate, App_Web_5stg2yaj" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="headForChildren" Runat="Server">
+    <asp:ContentPlaceHolder ID="headForPages" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="contents" Runat="Server">
+    <div class="section">
+        <div class="section-center">
+            <div class="container">
+                <br/>
+                <h1><asp:Label ID="PageTitle" runat="server"></asp:Label></h1>
+                <p class="lead">
+                	<asp:Label ID="PageParagraph" runat="server"></asp:Label>
+                </p>
+                <div class="row justify-content-between">
+                    <div>
+                        <asp:Button runat="server" ID="GetBtn" CssClass="btn btn-primary"/>
+                    </div>
+                </div>
+                <br/>
+                <asp:Table runat="server" CssClass="table table-dark table-hover" ID="ContentTable" CellPadding="10" GridLines="Both" HorizontalAlign="Center">
+                    <asp:TableHeaderRow ID="TableContentRow" runat="server">
+                    </asp:TableHeaderRow>
+                </asp:Table>
+                <asp:PlaceHolder ID="GenericAddEditModal" runat="server" Visible="false">
+                    <div class="modal-static-backdrop"></div>
+                    <div class="modal modal-static">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title"><asp:Label ID="ModalTitleLabel" runat="server"></asp:Label></h4>
+                                    <asp:LinkButton ID="BtnModalCloseHeader" runat="server" CssClass="close" >
+                                        <span class="material-icons">
+                                        close
+                                	    </span>
+                                    </asp:LinkButton>
+                                </div>
+                                <div class="modal-body">
+                                    <asp:ContentPlaceHolder runat="server" ID="ModalContent">
+                                    </asp:ContentPlaceHolder>
+                                </div>
+                                <div class="modal-footer" style="gap: 1rem;">
+                                    <asp:LinkButton ID="BtnModalCloseFooter" runat="server" CssClass="btn btn-primary" Text="Close"></asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </asp:PlaceHolder>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+

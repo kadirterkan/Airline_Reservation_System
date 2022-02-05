@@ -29,9 +29,13 @@
             </div>
         </div>
         <br/>
-        <asp:PlaceHolder runat="server" ID="FlightsList">
-            
-        </asp:PlaceHolder>
+        <asp:Table runat="server" CssClass="table table-dark table-hover" ID="ContentTable" CellPadding="10" GridLines="Both" HorizontalAlign="Center">
+            <asp:TableHeaderRow ID="TableContentRow" runat="server">
+            </asp:TableHeaderRow>
+        </asp:Table>
+        <%-- <asp:PlaceHolder runat="server" ID="FlightsList"> --%>
+        <%--      --%>
+        <%-- </asp:PlaceHolder> --%>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ModalBody" Runat="Server">

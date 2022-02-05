@@ -18,7 +18,7 @@ public class CountryController : BaseController
 
     public List<Country> GetArrivalCountriesByAirportId(Int64 airportId)
     {
-        String commandText = @"SELECT * FROM COUNTRY INNER JOIN AIRPORT ON AIRPORT.COUNTRY_ID = COUNTRY.ID INNER JOIN AVAILABLE_ROUTES ON AIRPORT2.ID = AIRPORT.ID WHERE AVAILABLE_ROUTES.AIRPORT2 = @ID";
+        String commandText = @"SELECT * FROM COUNTRY INNER JOIN AIRPORT ON AIRPORT.COUNTRY_ID = COUNTRY.ID INNER JOIN AVAILABLE_ROUTES ON AIRPORT2 = AIRPORT.ID WHERE AVAILABLE_ROUTES.AIRPORT2 = @ID";
         SqlCommand command = new SqlCommand(commandText, Connection);
         command.Parameters.Add("@ID",SqlDbType.BigInt);
         command.Parameters["@ID"].Value = airportId;

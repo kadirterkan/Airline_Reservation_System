@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Control.Common;
 using Control.Enum_Like;
@@ -8,7 +9,7 @@ namespace Control.Flights.Customer.Ticket
     {
         private Flight.Entities.Flight _flight;
         private Passenger.Passenger _passenger;
-        private FlightClassEnum _flightClass;
+        public String FlightClass { get; set; }
         private string _passengerSeat;
 
         public Flight.Entities.Flight Flight
@@ -21,12 +22,6 @@ namespace Control.Flights.Customer.Ticket
         {
             get => _passenger;
             set => _passenger = value;
-        }
-
-        public FlightClassEnum FlightClass
-        {
-            get => _flightClass;
-            set => _flightClass = value;
         }
 
         public string PassengerSeat

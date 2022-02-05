@@ -12,6 +12,28 @@ public class RoutesController : BaseController
 {
     private AirportController _airportController = new AirportController();
 
+    public Int64 GetRouteIdWithAirports(Int64 airport1, Int64 airport2)
+    {
+        String commandText = @"SELECT ID FROM AVAILABLE_ROUTES as AR WHERE AIRPORT1 = @AIRPORT1 AND AIRPORT2 = @AIRPORT2";
+        SqlCommand command = new SqlCommand(commandText, Connection);
+        command.Parameters.Add("@AIRPORT1", SqlDbType.BigInt);
+        command.Parameters.Add("@AIRPORT2", SqlDbType.BigInt);
+        command.Parameters["@AIRPORT1"].Value = airport1;
+        command.Parameters["@AIRPORT2"].Value = airport2;
+
+        Connection.Open();
+
+        SqlDataReader reader = command.ExecuteReader();
+
+        reader.Read();
+
+        Int64 returnValue = Convert.ToInt64(reader["ID"]);
+        
+        Connection.Close();
+
+        return returnValue;
+    }
+    
     public Boolean AddRoute(Routes routes)
     {
         String commandText =

@@ -1,5 +1,7 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="BaseMasterPage, App_Web_g3hau3mz" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="BaseMasterPage, App_Web_jylvw4bz" %>
 
+<%@ Register src="Components/FlightCard.ascx" tagPrefix="uc" tagName="FlightCard" %>
+<%@ Register src="Components/passengerTabContainer.ascx" tagPrefix="uc" tagName="passengerTabContainer" %>
 <!DOCTYPE html>
 
 <html>

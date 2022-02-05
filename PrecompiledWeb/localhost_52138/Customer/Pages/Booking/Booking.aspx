@@ -1,4 +1,5 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Customer/Components/MasterPage/BookingTemplate.master" autoeventwireup="true" inherits="Customer_Pages_Booking_Booking, App_Web_ryetck4s" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Customer/Components/MasterPage/BookingTemplate.master" autoeventwireup="true" inherits="Customer_Pages_Booking_Booking, App_Web_uqvpdfmu" %>
+<%@ Register TagPrefix="uc" TagName="FlightCard" Src="~/Components/FlightCard.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headerForPage" Runat="Server">
     <title>Booking</title>
@@ -6,8 +7,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="formInsideContent" Runat="Server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">  
     </asp:ScriptManager>
-    <div class="container">
-        <div class="row row-cols-3">
+    <div class="container col gy-5">
+        <div class="row row-cols-3 align-items-center">
             <div class="col-md-3">
                 <asp:LinkButton runat="server" ID="lastDayButton" AutoPostBack="True" OnClick="OnClickDecreaseDay">
                     <span class="material-icons">arrow_back_ios</span>
@@ -27,7 +28,10 @@
                 </asp:LinkButton>
             </div>
         </div>
-        
+        <br/>
+        <asp:PlaceHolder runat="server" ID="FlightsList">
+            
+        </asp:PlaceHolder>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ModalBody" Runat="Server">

@@ -18,7 +18,7 @@ public partial class Terminal_Components_MasterPage_Terminal : System.Web.UI.Mas
     protected void OnClick(object sender, EventArgs e)
     {
         Session["username"] = null;
-        Session["authorization"] = null;
+        Session["userId"] = null;
         Response.Redirect("../../Pages/Login/Login.aspx");
     }
 }

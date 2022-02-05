@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" masterpagefile="~/Terminal/Components/MasterPage/Terminal.master" autoeventwireup="true" inherits="Terminal_Components_MasterPage_SeeAddEditRemoveTemplate, App_Web_3vqpytax" %>
+﻿<%@ master language="C#" masterpagefile="~/Terminal/Components/MasterPage/Terminal.master" autoeventwireup="true" inherits="Terminal_Components_MasterPage_SeeAddEditRemoveTemplate, App_Web_vwy3qntv" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headForChildren" Runat="Server">
     <asp:ContentPlaceHolder ID="headForPages" runat="server">
@@ -33,7 +33,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title"><asp:Label ID="ModalTitleLabel" runat="server"></asp:Label></h4>
-                                        <asp:LinkButton ID="BtnModalCloseHeader" runat="server" CssClass="close" >
+                                        <asp:LinkButton ID="BtnModalCloseHeader" CausesValidation="False" runat="server" CssClass="close" >
                                             <span class="material-icons">
                                             close
                                 	        </span>
@@ -45,8 +45,8 @@
                                         </asp:ContentPlaceHolder>
                                     </div>
                                     <div class="modal-footer" style="gap: 1rem;">
-                                        <asp:LinkButton ID="BtnModalSubmitFooter" runat="server" CssClass="btn btn-primary" Text="Submit"></asp:LinkButton>
-                                        <asp:LinkButton ID="BtnModalCloseFooter" runat="server" CssClass="btn btn-primary" Text="Close"></asp:LinkButton>
+                                        <asp:LinkButton ID="BtnModalSubmitFooter" CausesValidation="True" runat="server" CssClass="btn btn-primary" Text="Submit"></asp:LinkButton>
+                                        <asp:LinkButton ID="BtnModalCloseFooter" CausesValidation="False" runat="server" CssClass="btn btn-primary" Text="Close"></asp:LinkButton>
                                     </div>
                                 </div>
                             </div>

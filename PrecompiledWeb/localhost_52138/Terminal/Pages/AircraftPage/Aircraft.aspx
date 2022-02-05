@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Terminal/Components/MasterPage/SeeAddEditRemoveTemplate.master" autoeventwireup="true" inherits="Terminal_Pages_Aircraft_Aircraft, App_Web_nrlemknz" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Terminal/Components/MasterPage/SeeAddEditRemoveTemplate.master" autoeventwireup="true" inherits="Terminal_Pages_Aircraft_Aircraft, App_Web_jyheusjl" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="headForPages" runat="server">
     <title>Aircrafts</title>
@@ -22,11 +22,11 @@
     </div>
     <div class="mb-3 input-group flex-nowrap">
         <span class="input-group-text" id="inputGroup-sizing-default">Economic Class Capacity</span>
-        <asp:TextBox runat="server" ID="economicClassCapacity" CssClass="form-control" type="number" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
+        <asp:TextBox runat="server" ID="economyClassCapacityIn" CssClass="form-control" type="number" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
     </div>
     <div class="mb-3 input-group flex-nowrap">
         <span class="input-group-text" id="inputGroup-sizing-default">Business Class Capacity</span>
-        <asp:TextBox runat="server" ID="BusinessClassCapacity" CssClass="form-control" type="number" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
+        <asp:TextBox runat="server" ID="businessClassCapacityIn" CssClass="form-control" type="number" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"></asp:TextBox>
     </div>
 </asp:Content>
 

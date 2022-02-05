@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Customer/Components/MasterPage/BookingTemplate.master" AutoEventWireup="true" CodeFile="Reservation.aspx.cs" Inherits="Customer_Pages_Reservation_Reservation" %>
+﻿<%@ page language="C#" masterpagefile="~/Customer/Components/MasterPage/BookingTemplate.master" autoeventwireup="true" inherits="Customer_Pages_Reservation_Reservation, App_Web_ooybncgq" %>
 <%@ Register TagPrefix="uc" TagName="passengerTabContainer_1" Src="~/Components/passengerTabContainer.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headerForPage" Runat="Server">
@@ -13,18 +13,25 @@
             <label style="color: white;"><h6>Reservation</h6></label>
         </div>
         <div class="mb-3">
-            <asp:TextBox runat="server" CssClass="form-control" type="text" MaxLength="11" placeholder="Phone Number" ID="phoneNumberId"></asp:TextBox>
+            <label style="color: white;">Phone Number = +1 (xxx) xxx-xx-xx</label>
+        </div>
+        <div class="mb-3">
+            <label style="color: white;">Email address = name@example.com</label>
         </div>
         <div class="mb-3">
             <ajaxToolkit:TabContainer ID="passengersTypeTab" CssClass="MyTable" runat="server">
                 <ajaxToolkit:TabPanel runat="server" HeaderText="Adult Passengers">
                     <ContentTemplate>
                         <ajaxToolkit:TabContainer ID="adultPassengersTabContainer" runat="server" CssClass="MyTable">
-                            
+                            <ajaxToolkit:TabPanel runat="server" HeaderText="Passenger 1">
+                                <ContentTemplate>
+                                    <uc:passengerTabContainer_1 runat="server"></uc:passengerTabContainer_1>
+                                </ContentTemplate>
+                            </ajaxToolkit:TabPanel>
                         </ajaxToolkit:TabContainer>
                     </ContentTemplate>
                 </ajaxToolkit:TabPanel>
-                <ajaxToolkit:TabPanel runat="server" HeaderText="Child Passengers">
+                <ajaxToolkit:TabPanel runat="server" HeaderText="Children Passengers">
                     <ContentTemplate>
                         <ajaxToolkit:TabContainer ID="childrenPassengersTabContainer" runat="server" Height="300px" CssClass="MyTable">
                             <ajaxToolkit:TabPanel runat="server" HeaderText="Passenger 1">
@@ -38,7 +45,7 @@
             </ajaxToolkit:TabContainer>
         </div>
         <div class="mb-3">
-            <asp:Button runat="server" ID="CheckoutBtn" CssClass="btn btn-primary btn-block" Text="Checkout" OnClick="CheckoutBtn_OnClick"/>
+            <asp:Button runat="server" ID="CheckoutBtn" CssClass="btn btn-primary btn-block" Text="Checkout"/>
         </div>
     </form>
 </asp:Content>

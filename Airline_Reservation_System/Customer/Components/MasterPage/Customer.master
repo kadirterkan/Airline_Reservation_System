@@ -24,9 +24,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="../../Pages/Tickets/Tickets.aspx">Tickets</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../Pages/UserInformation/UserInformation.aspx">User Informations</a>
-                        </li>
+                        <%-- <li class="nav-item"> --%>
+                        <%--     <a class="nav-link" href="../../Pages/UserInformation/UserInformation.aspx">User Informations</a> --%>
+                        <%-- </li> --%>
                     </ul>
                     <div class="my-2 my-lg-0">
                         <asp:LinkButton class="nav-link" OnClick="OnClick" runat="server">Log Out</asp:LinkButton>

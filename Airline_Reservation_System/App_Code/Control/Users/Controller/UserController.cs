@@ -10,6 +10,42 @@ namespace Control.Users.Controller
 {
     public class UserController : BaseController
     {
+        public BaseUser GetUserByUserName(String username)
+        {
+            String commandText = @"SELECT * FROM BASE_USER WHERE User_Name = @USERNAME";
+            SqlCommand command = new SqlCommand(commandText,Connection);
+            command.Parameters.Add("@USERNAME",SqlDbType.VarChar);
+            command.Parameters["@USERNAME"].Value = username;
+
+            return CommandToBaseUser(command);
+        }
+        
+        private BaseUser CommandToBaseUser(SqlCommand command)
+        {
+            Connection.Open();
+            
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            BaseUser returnValue = ReaderToBaseUser(reader);
+            
+            Connection.Close();
+
+            return returnValue;
+        }
+
+        private BaseUser ReaderToBaseUser(SqlDataReader reader)
+        {
+            BaseUser baseUser = new BaseUser();
+
+            baseUser.ID = Convert.ToInt64(reader["ID"]);
+            baseUser.UserName = reader["USER_NAME"].ToString();
+            baseUser.EMail = reader["EMAIL"].ToString();
+
+            return baseUser;
+        }
+        
         public Boolean IsUserNameUnique(String username)
         {
             String commandText = @"SELECT * FROM BASE_USER WHERE User_Name = @USERNAME";

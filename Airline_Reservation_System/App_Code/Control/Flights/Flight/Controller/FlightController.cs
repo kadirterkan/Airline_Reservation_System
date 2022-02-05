@@ -17,6 +17,30 @@ public class FlightController : BaseController
         
     }
 
+    public List<Flight> GetFlightsByDateAndRouteId(DateTime dateTime, Int64 routeId)
+    {
+        String commandText = @"SELECT * FROM FLIGHT INNER JOIN AIRCRAFT ON FLIGHT.AIRCRAFT_ID = AIRCRAFT.ID INNER JOIN AVAILABLE_ROUTES ON FLIGHT.AVAILABLE_ROUTES_ID = AVAILABLE_ROUTES.ID WHERE DATEDIFF(day, FLIGHT.DEPARTURE_TIME , @DATE_TIME) = 0 AND FLIGHT.AVAILABLE_ROUTES_ID = @ROUTE_ID";
+        SqlCommand command = new SqlCommand(commandText, Connection);
+        command.Parameters.Add("@DATE_TIME", SqlDbType.DateTime);
+        command.Parameters.Add("@ROUTE_ID", SqlDbType.BigInt);
+        command.Parameters["@DATE_TIME"].Value = dateTime;
+        command.Parameters["@ROUTE_ID"].Value = routeId;
+        
+        List<Flight> flights = CommandToFlightList(command);
+
+        return AddTicketsToFlight(flights);
+    }
+
+    private List<Flight> AddTicketsToFlight(List<Flight> flights)
+    {
+        foreach (var flight in flights)
+        {
+            flight.Tickets = _ticketController.GetTicketsByFlightId(flight.ID);
+        }
+
+        return flights;
+    }
+
     public Boolean AddFlight(Flight flight)
     {
         String commandText = @"INSERT INTO FLIGHT (CREATION_DATE, UPDATE_DATE, FLIGHT_NUMBER, FLIGHT_TIME_BY_MINUTES, GATE_NO, FLIGHT_TYPE, FLIGHT_ECONOMY_CAPACITY, FLIGHT_BUSINESS_CAPACITY, DEPARTURE_TIME, AIRCRAFT_ID, AVAILABLE_ROUTES_ID) VALUES(CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @FLIGHT_NUMBER, @FLIGHT_TIME_BY_MINUTES, @GATE_NO, @FLIGHT_TYPE, @FLIGHT_ECONOMY_CAPACITY, @FLIGHT_BUSINESS_CAPACITY, @DEPARTURE_TIME, @AIRCRAFT_ID, @AVAILABLE_ROUTES_ID);";
@@ -163,6 +187,8 @@ public class FlightController : BaseController
         flight.FlightNumber = reader["FLIGHT_NUMBER"].ToString();
         flight.FlightTimeByMinutes = Convert.ToInt32(reader["FLIGHT_TIME_BY_MINUTES"]);
         flight.GateNo = reader["GATE_NO"].ToString();
+        flight.EcoCapacity = Convert.ToInt32(reader["FLIGHT_ECONOMY_CAPACITY"]);
+        flight.BusCapacity = Convert.ToInt32(reader["FLIGHT_BUSINESS_CAPACITY"]);
         
         flight.FlightRoute = new Routes();
         flight.FlightRoute.ID = Convert.ToInt64(reader["AVAILABLE_ROUTES_ID"]);
@@ -238,6 +264,34 @@ public class FlightController : BaseController
         tableRow.Cells.Add(arrivalAirportName);
         tableRow.Cells.Add(planeEconomyAttenders);
         tableRow.Cells.Add(planeBusinessAttenders);
+
+        return tableRow;
+    }
+
+    public TableRow ToTableRowForBooking(Flight flight)
+    {
+        TableRow tableRow = new TableRow();
+
+        TableCell ID = new TableCell();
+        ID.Text = flight.ID.ToString();
+        
+        TableCell flightNumber = new TableCell();
+        flightNumber.Text = flight.FlightNumber;
+
+        TableCell flightDepartureDate = new TableCell();
+        flightDepartureDate.Text = flight.DepartureTime.ToString();
+
+        TableCell departureAirportName = new TableCell();
+        departureAirportName.Text = _airportController.GetAirportById(flight.FlightRoute.DepartureAirport.ID).AirportName;
+
+        TableCell arrivalAirportName = new TableCell();
+        arrivalAirportName.Text = _airportController.GetAirportById(flight.FlightRoute.ArrivalAirport.ID).AirportName;
+        
+        tableRow.Cells.Add(ID);
+        tableRow.Cells.Add(flightNumber);
+        tableRow.Cells.Add(flightDepartureDate);
+        tableRow.Cells.Add(departureAirportName);
+        tableRow.Cells.Add(arrivalAirportName);
 
         return tableRow;
     }

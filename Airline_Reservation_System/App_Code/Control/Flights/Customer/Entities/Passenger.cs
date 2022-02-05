@@ -8,32 +8,13 @@ namespace Control.Passenger
 {
     public class Passenger : BaseEntity
     {
-        private string _firstName;
-        private string _lastName;
-        private GenderEnum _gender;
+        public String FirstLastName { get; set; }
+        public String Gender { get; set; }
         private AgeEnum _age;
         private string _phoneNumber;
         public string EmailAddress { get; set; }
         public ICollection<Ticket> Tickets { get; set; }
         public String PassportNumber { get; set; }
-
-        public string FirstName
-        {
-            get => _firstName;
-            set => _firstName = value;
-        }
-
-        public string LastName
-        {
-            get => _lastName;
-            set => _lastName = value;
-        }
-
-        public GenderEnum Gender
-        {
-            get => _gender;
-            set => _gender = value;
-        }
 
         public AgeEnum Age
         {
